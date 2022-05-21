@@ -1,6 +1,7 @@
 import express, {Express, Request, Response} from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import {getUser} from './src/controller/userController'
 
 
 const app: Express  = express();
@@ -12,8 +13,6 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hi Api has been called Syed')
-});
+app.get('/', getUser);
 
 app.listen(port, () => console.log(`Congratz server is running on port :: ${port}!`))
