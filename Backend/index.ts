@@ -1,13 +1,19 @@
-import express, {Express, Request, Response} from 'express';
+import 'dotenv/config';
+import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import {getAllUsers, getUserById} from './src/controller/userController'
-import {getAllOrders, getOrderById} from './src/controller/orderController'
+import { getAllUsers, getUserById } from './src/controller/userController'
+import { getAllOrders, getOrderById } from './src/controller/orderController'
+import config from 'config';
 
 
+const port2 = config.get('app.port');
+console.log(port2)
 
-const app: Express  = express();
-const port = 3000;
+const app: Express = express();
+const port = process.env.PORT || 3000;
+
+
 
 app.use(cors({
     origin: '*',
