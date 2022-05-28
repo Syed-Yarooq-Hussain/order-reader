@@ -6,20 +6,25 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "dev": "cross-env NODE_ENV=development && concurrently  \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "prod": "cross-env NODE_ENV=production cd src && concurrently  \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "syed yarooq",
   "license": "ISC",
   "devDependencies": {
+    "@types/config": "^0.0.41",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.35",
+    "cross-env": "^7.0.3",
     "typescript": "^4.6.4"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
+    "config": "^3.3.7",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",
     "firebase-admin": "^10.2.0",
