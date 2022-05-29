@@ -22,7 +22,7 @@ app.get('/users', getAllUsers);
 app.get('/user/:id', getUserById);
 app.post('/login', login)
 //Order Route
-app.get('/orders', authenticateToken, getAllOrders);
-app.get('/order/:id', authenticateToken, getOrderById);
+app.get('/orders',/*  authenticateToken, */ getAllOrders);
+app.get('/order/:id', /* authenticateToken, */ getOrderById);
 
 app.listen(port, () => console.log(`Congratz server is running on port :: ${port}!`))
