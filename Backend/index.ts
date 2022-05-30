@@ -22,10 +22,10 @@ app.get('/users', getAllUsers);
 app.get('/user/:id', getUserById);
 app.post('/login', login)
 //Order Route
-app.get('/orders',/*  authenticateToken, */ getAllOrders);
-app.get('/order/:id', /* authenticateToken, */ getOrderById);
-app.delete('/order/:id', deleteOrderById);
-app.put('/order/:id', EditOrderById);
-app.post('/order', EditOrderById);
+app.get('/orders', authenticateToken, getAllOrders);
+app.get('/order/:id', authenticateToken, getOrderById);
+app.delete('/order/:id',authenticateToken, deleteOrderById);
+app.put('/order/:id',authenticateToken, EditOrderById);
+app.post('/order',authenticateToken, EditOrderById);
 
 app.listen(port, () => console.log(`Congratz server is running on port :: ${port}!`))
