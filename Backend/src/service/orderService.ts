@@ -13,3 +13,16 @@ export const getOrdersList = async (page= 1) => {
 }
 
 export const getOrderByid = async (id: string) => await orders.doc(id).get();
+
+export const deleteOrderByid = async (id: string) => await orders.doc(id).delete();
+
+export const EditOrderByid = async (id: string ,body: any) => {
+    await orders.doc(id).set(body);
+    return await getOrderByid(id)
+}
+
+export const addOrder = async (body: any) => {
+    await orders.doc(body.id).set(body);
+
+    return await getOrderByid(body.id)
+}

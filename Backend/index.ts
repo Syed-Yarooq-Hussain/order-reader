@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { getAllUsers, getUserById, login } from './src/controller/userController'
-import { getAllOrders, getOrderById } from './src/controller/orderController'
+import { getAllOrders, getOrderById, deleteOrderById, EditOrderById } from './src/controller/orderController'
 import { authenticateToken } from './src/middleware/auth'
 
 import config from 'config';
@@ -24,5 +24,8 @@ app.post('/login', login)
 //Order Route
 app.get('/orders',/*  authenticateToken, */ getAllOrders);
 app.get('/order/:id', /* authenticateToken, */ getOrderById);
+app.delete('/order/:id', deleteOrderById);
+app.put('/order/:id', EditOrderById);
+app.post('/order', EditOrderById);
 
 app.listen(port, () => console.log(`Congratz server is running on port :: ${port}!`))
